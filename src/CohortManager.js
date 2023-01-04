@@ -18,6 +18,7 @@ class CohortManager {
     this.students = []
     this.studentsId = 1
   }
+
   // ensure when non specified characters are entered that an error message
   // is returned.
   addCohort(name) {
@@ -31,6 +32,7 @@ class CohortManager {
 
       this.cohorts.push(newCohort)
 
+      // eslint-disable-next-line array-callback-return
       this.cohorts.find((element) => {
         if (element.name === name) {
           selectedName.push(element)
@@ -53,6 +55,7 @@ class CohortManager {
   // search cohort attributes when inputting a search.
   searchByName(list, name) {
     const selectedItem = []
+    // eslint-disable-next-line array-callback-return
     list.find((element) => {
       // if entered data and stored data are same, return said.
       if (element.name === name) {
@@ -69,6 +72,7 @@ class CohortManager {
   // stored data if present.
   searchById(id) {
     const selectedItem = []
+    // eslint-disable-next-line array-callback-return
     this.students.find((element) => {
       if (element.id === id) {
         selectedItem.push(element)
@@ -91,6 +95,7 @@ class CohortManager {
     selectedCohort.students.push(selectedStudent)
     return selectedCohort
   }
+
   // remove cohort from stored data.
   removeCohort(cohort) {
     const selectedCohort = this.searchByName(this.cohorts, cohort)
@@ -108,6 +113,7 @@ class CohortManager {
     // return updated list of cohorts.
     return this.cohorts
   }
+
   // remove individual student from cohort
   removeStudent(name) {
     const selectedStudent = this.searchByName(this.students, name)
